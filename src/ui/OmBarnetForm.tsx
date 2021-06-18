@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { Form } from '@navikt/k9-react-components';
 import { RadioGroupPanel, TextArea } from '@navikt/k9-form-utils';
 import { required } from '../validators/index';
+import ContainerContext from './context/ContainerContext';
 
 enum RadioOptions {
     MINDRE_ENN_TRE_ÅR = 'mindreEnnTreÅr',
@@ -16,6 +17,7 @@ export enum FieldName {
 
 const OmBarnetForm = () => {
     const formMethods = useForm();
+    const { readOnly } = useContext(ContainerContext);
 
     const handleSubmit = () => {
         return null;
@@ -40,7 +42,7 @@ const OmBarnetForm = () => {
                             ]}
                             name={FieldName.VURDER_PERIODE}
                             validators={{ required }}
-                            // disabled={readOnly}
+                            disabled={readOnly}
                         />
                     </div>
                     <div className="mt-3 max-w-xl">
@@ -48,7 +50,7 @@ const OmBarnetForm = () => {
                             label="Vurdering"
                             name={FieldName.BEGRUNNELSE}
                             validators={{ required }}
-                            // disabled={readOnly}
+                            disabled={readOnly}
                         />
                     </div>
                 </Form>
