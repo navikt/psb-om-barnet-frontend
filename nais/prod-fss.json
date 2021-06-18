@@ -1,0 +1,9 @@
+{
+    "app": "psb-om-barnet-frontend",
+    "cluster": "prod-fss",
+    "namespace": "pleiepenger",
+    "team": "pleiepenger",
+    "minReplicas": "1",
+    "maxReplicas": "2",
+    "ingresses": ["https://psb-om-barnet-frontend.intern.nav.no"]
+}

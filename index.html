@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Om barnet</title>
+        <style>
+            body {
+                font-family: 'Source Sans Pro', Arial, sans-serif;
+                font-size: 1rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app" style="padding: 2.5rem"></div>
+        <script type="text/javascript">
+            setTimeout(() => {
+                window.renderOmBarnetApp('app', {
+                    readOnly: false,
+                    endpoints: {},
+                });
+            }, 300);
+        </script>
+    </body>
+</html>
