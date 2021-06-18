@@ -25,35 +25,6 @@ module.exports = {
                     loader: 'babel-loader',
                 },
             },
-            // {
-            //     test: /\.less$/,
-            //     use: [
-            //         cssExtractLoaderConfig,
-            //         {
-            //             loader: 'css-loader',
-            //             options: {
-            //                 importLoaders: 1,
-            //                 modules: {
-            //                     localIdentName: '[name]_[local]_[contenthash:base64:5]',
-            //                 },
-            //             },
-            //         },
-            //         {
-            //             loader: 'less-loader',
-            //             options: {
-            //                 lessOptions: {
-            //                     modules: true,
-            //                     localIdentName: '[name]_[local]_[contenthash:base64:5]',
-            //                     modifyVars: {
-            //                         nodeModulesPath: '~',
-            //                         coreModulePath: '~',
-            //                     },
-            //                 },
-            //             },
-            //         },
-            //     ],
-            //     exclude: [nodeModules],
-            // },
             {
                 test: /\.(less)?$/,
                 use: [
