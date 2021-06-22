@@ -14,7 +14,9 @@
             setTimeout(() => {
                 window.renderOmBarnetApp('app', {
                     readOnly: false,
-                    endpoints: {},
+                    endpoints: {
+                        rettVedDod: 'http://localhost:8082/mock/rettVedDod',
+                    },
                 });
             }, 300);
         </script>

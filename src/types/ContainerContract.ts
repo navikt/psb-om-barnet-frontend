@@ -3,7 +3,7 @@ import { HttpErrorHandler } from '@navikt/k9-http-utils';
 interface ContainerContract {
     readOnly: boolean;
     endpoints: {
-        rettVedDød: string;
+        rettVedDod: string;
     };
     httpErrorHandler: HttpErrorHandler;
     onFinished: (vurdering) => void;

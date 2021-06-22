@@ -19,7 +19,7 @@ const MainComponent = ({ data }: MainComponentProps): JSX.Element => {
     const httpCanceler = useMemo(() => axios.CancelToken.source(), []);
 
     const getRettVedDød = () =>
-        get<RettVedDød>(endpoints.rettVedDød, httpErrorHandler, {
+        get<RettVedDød>(endpoints.rettVedDod, httpErrorHandler, {
             cancelToken: httpCanceler.token,
         });
 
