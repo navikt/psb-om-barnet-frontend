@@ -33,7 +33,6 @@ const MainComponent = ({ data }: MainComponentProps): JSX.Element => {
                 }
             })
             .catch((e) => {
-                console.error(e);
                 setIsLoading(false);
                 isMounted = false;
                 httpCanceler.cancel();
