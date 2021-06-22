@@ -6,7 +6,7 @@
         "test": "jest",
         "test-watch": "jest --watch",
         "start": "node ./server.js",
-        "build": "webpack --config webpack/webpack-config.production.js",
+        "build": "export NODE_ENV=production && webpack --config webpack/webpack-config.production.js",
         "dev": "node webpack/webpack-config.development.js",
         "majorVersion": "node ./majorVersion.js",
         "lint": "eslint 'src/**/*.{ts,tsx,js,jsx}'",

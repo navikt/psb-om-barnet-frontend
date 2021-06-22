@@ -59,6 +59,7 @@ module.exports = {
                     },
                     'postcss-loader',
                 ],
+                exclude: [nodeModules],
             },
             {
                 test: /\.(jpg|png|svg)$/,
