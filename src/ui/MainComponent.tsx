@@ -7,6 +7,7 @@ import { RettVedDød } from '../types/RettVedDød';
 import ContainerContext from './context/ContainerContext';
 import RettVedDødController from './rett-ved-død/RettVedDødController';
 import './styles.css';
+import OmBarnet from './om-barnet/OmBarnet';
 
 interface MainComponentProps {
     data: ContainerContract;
@@ -48,21 +49,7 @@ const MainComponent = ({ data }: MainComponentProps): JSX.Element => {
             <h1 className="text-3xl font-semibold">Om barnet</h1>
             <PageContainer isLoading={isLoading}>
                 <div className="flex mt-10">
-                    <p className="mr-7">
-                        Navn:
-                        <span className="font-semibold ml-1">Dummy data</span>
-                    </p>
-
-                    <p className="mr-7">
-                        Fødselsnummer:
-                        <span className="font-semibold ml-1">Dummy data</span>
-                    </p>
-
-                    <p className="mr-7">
-                        Diagnose:
-                        <span className="font-semibold ml-1">Dummy data</span>
-                    </p>
-                    <p className="mr-7 text-white bg-black rounded pr-2 pl-2">Dummy data</p>
+                    <OmBarnet />
                 </div>
                 <div className="mt-6 pt-6 border-t border-gray-300">
                     <RettVedDødController rettVedDød={rettVedDød} />
