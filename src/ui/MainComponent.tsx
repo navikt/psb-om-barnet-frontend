@@ -50,19 +50,19 @@ const MainComponent = ({ data }: MainComponentProps): JSX.Element => {
                 <div className="flex mt-10">
                     <p className="mr-7">
                         Navn:
-                        <span className="font-semibold ml-1">Snill Blyant</span>
+                        <span className="font-semibold ml-1">Dummy data</span>
                     </p>
 
                     <p className="mr-7">
                         Fødselsnummer:
-                        <span className="font-semibold ml-1">00000000000</span>
+                        <span className="font-semibold ml-1">Dummy data</span>
                     </p>
 
                     <p className="mr-7">
                         Diagnose:
-                        <span className="font-semibold ml-1">Diagnose</span>
+                        <span className="font-semibold ml-1">Dummy data</span>
                     </p>
-                    <p className="mr-7 text-white bg-black rounded pr-2 pl-2">Død 01.01.2021</p>
+                    <p className="mr-7 text-white bg-black rounded pr-2 pl-2">Dummy data</p>
                 </div>
                 <div className="mt-6 pt-6 border-t border-gray-300">
                     <RettVedDødController rettVedDød={rettVedDød} />
