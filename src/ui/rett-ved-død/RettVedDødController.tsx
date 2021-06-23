@@ -15,7 +15,7 @@ const RettVedDødController = ({ rettVedDød }: RettVedDødControllerProps): JSX
     const { readOnly } = useContext(ContainerContext);
     const [editMode, setEditMode] = React.useState(false);
 
-    const getHeading = () => <h2 className="text-xl font-semibold">Rett til pleiepenger ved barnets død</h2>;
+    const getHeading = () => <h2 className="m-0 text-xl font-semibold">Rett til pleiepenger ved barnets død</h2>;
 
     if (readOnly && !rettVedDød) {
         return null;

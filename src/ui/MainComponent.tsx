@@ -46,12 +46,10 @@ const MainComponent = ({ data }: MainComponentProps): JSX.Element => {
 
     return (
         <ContainerContext.Provider value={data}>
-            <h1 className="text-3xl font-semibold">Om barnet</h1>
+            <h1 className="text-3xl font-semibold m-0">Om barnet</h1>
             <PageContainer isLoading={isLoading}>
-                <div className="flex mt-10">
-                    <OmBarnet />
-                </div>
-                <div className="mt-6 pt-6 border-t border-gray-300">
+                <OmBarnet />
+                <div className="mt-10 pt-4 border-0 border-t border-solid border-gray-300">
                     <RettVedDødController rettVedDød={rettVedDød} />
                 </div>
             </PageContainer>

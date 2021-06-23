@@ -18,13 +18,13 @@ const RettVedDødVurderingsdetaljer = ({ rettVedDød }: RettVedDødVurderingsdet
 
     return (
         <>
-            <div className="mt-6 flex">
-                <GreenCheckIcon />
-                <p className="ml-1">{getRettVedDødUtfallTekst()}</p>
+            <div className="mt-6 flex items-center">
+                <GreenCheckIcon size={19} />
+                <p className="my-0 ml-1.5">{getRettVedDødUtfallTekst()}</p>
             </div>
             <div className="mt-6">
-                <p className="font-semibold">Vurdering</p>
-                <p className="mt-2">{rettVedDød.vurdering}</p>
+                <p className="font-semibold my-0 leading-6">Vurdering</p>
+                <p className="mt-2 mb-0">{rettVedDød.vurdering}</p>
             </div>
         </>
     );
