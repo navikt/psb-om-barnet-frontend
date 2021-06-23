@@ -4,6 +4,7 @@ interface ContainerContract {
     readOnly: boolean;
     endpoints: {
         rettVedDod: string;
+        omPleietrengende: string;
     };
     httpErrorHandler: HttpErrorHandler;
     onFinished: (vurdering) => void;
