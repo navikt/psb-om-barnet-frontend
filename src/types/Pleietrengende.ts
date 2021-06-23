@@ -8,13 +8,13 @@ class Pleietrengende {
 
     diagnosekoder: string;
 
-    dodsdato: string;
+    dødsdato: string;
 
     constructor({ fnr, navn, diagnosekoder, dodsdato }: PleietrengendeResponse) {
         this.fnr = fnr;
         this.navn = navn;
         this.diagnosekoder = diagnosekoder?.join(', ');
-        this.dodsdato = dodsdato ? prettifyDate(initializeDate(dodsdato)) : null;
+        this.dødsdato = dodsdato ? prettifyDate(initializeDate(dodsdato)) : null;
     }
 }
 
