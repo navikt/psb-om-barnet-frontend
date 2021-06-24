@@ -18,6 +18,10 @@ app.use('/mock/rettVedDod', (req, res) => {
     });
 });
 
+app.use('/mock/omPleietrengende', (req, res) => {
+    res.send({ fnr: '012345678912', navn: 'DUCK DOLE', diagnosekoder: ['R619', 'A300'], dodsdato: '2021-05-26' });
+});
+
 const port = 8082;
 app.listen(port, (error) => {
     if (error) {

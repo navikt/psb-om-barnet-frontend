@@ -2,10 +2,10 @@ import React, { useContext } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { Form } from '@navikt/k9-react-components';
 import { RadioGroupPanel, TextArea } from '@navikt/k9-form-utils';
-import { required } from '../../validators/index';
-import ContainerContext from '../context/ContainerContext';
-import RettVedDødUtfallType from '../../types/RettVedDødType';
-import { RettVedDød } from '../../types/RettVedDød';
+import { required } from '../../../validators/index';
+import ContainerContext from '../../context/ContainerContext';
+import RettVedDødUtfallType from '../../../types/RettVedDødType';
+import { RettVedDød } from '../../../types/RettVedDød';
 
 export enum FieldName {
     RETT_VED_DØD_TYPE = 'rettVedDødType',
