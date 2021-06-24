@@ -1,7 +1,7 @@
 import { GreenCheckIcon } from '@navikt/k9-react-components';
 import React from 'react';
-import { RettVedDød } from '../../types/RettVedDød';
-import RettVedDødUtfallType from '../../types/RettVedDødType';
+import { RettVedDød } from '../../../types/RettVedDød';
+import RettVedDødUtfallType from '../../../types/RettVedDødType';
 
 interface RettVedDødVurderingsdetaljerProps {
     rettVedDød: RettVedDød;

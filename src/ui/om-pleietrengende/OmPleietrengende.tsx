@@ -9,6 +9,7 @@ import PleietrengendeResponse from '../../types/PleietrengendeResponse';
 const OmPleietrengende = (): JSX.Element => {
     const { endpoints, httpErrorHandler } = useContext(ContainerContext);
     const [isLoading, setIsLoading] = useState(true);
+    const [hasFailed, setHasFailed] = useState(false);
     const [pleietrengende, setPleietrengende] = useState<Pleietrengende>(null);
     const httpCanceler = useMemo(() => axios.CancelToken.source(), []);
 
@@ -27,8 +28,9 @@ const OmPleietrengende = (): JSX.Element => {
                     setIsLoading(false);
                 }
             })
-            .catch((e) => {
+            .catch(() => {
                 setIsLoading(false);
+                setHasFailed(true);
                 isMounted = false;
                 httpCanceler.cancel();
             });
@@ -39,7 +41,7 @@ const OmPleietrengende = (): JSX.Element => {
     }, []);
 
     return (
-        <PageContainer isLoading={isLoading}>
+        <PageContainer isLoading={isLoading} hasError={hasFailed}>
             {pleietrengende && (
                 <div className="flex items-center mt-10">
                     <p className="my-0 mr-7">

@@ -2,18 +2,24 @@ import { get } from '@navikt/k9-http-utils';
 import { LinkButton, PageContainer } from '@navikt/k9-react-components';
 import axios from 'axios';
 import Alertstripe from 'nav-frontend-alertstriper';
-import React, { useContext, useEffect, useMemo, useState } from 'react';
-import { RettVedDød } from '../../types/RettVedDød';
-import ContainerContext from '../context/ContainerContext';
-import WriteAccessBoundContent from '../write-access-bound-content/WriteAccessBoundContent';
-import RettVedDødForm from './RettVedDødForm';
-import RettVedDødVurderingsdetaljer from './RettVedDødVurderingsdetaljer';
+import React, { useContext, useEffect, useMemo, useReducer } from 'react';
+import { RettVedDød } from '../../../types/RettVedDød';
+import ContainerContext from '../../context/ContainerContext';
+import WriteAccessBoundContent from '../../write-access-bound-content/WriteAccessBoundContent';
+import RettVedDødForm from '../rett-ved-død-form/RettVedDødForm';
+import RettVedDødVurderingsdetaljer from '../rett-ved-død-vurderingsdetaljer/RettVedDødVurderingsdetaljer';
+import ActionType from './actionTypes';
+import rettVedDødReducer from './reducer';
 
 const RettVedDødController = (): JSX.Element => {
+    const [state, dispatch] = useReducer(rettVedDødReducer, {
+        hasFailed: false,
+        isLoading: true,
+        rettVedDød: null,
+        editMode: false,
+    });
+    const { rettVedDød, editMode, isLoading, hasFailed } = state;
     const { readOnly, endpoints, httpErrorHandler } = useContext(ContainerContext);
-    const [editMode, setEditMode] = React.useState(false);
-    const [rettVedDød, setRettVedDød] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
     const httpCanceler = useMemo(() => axios.CancelToken.source(), []);
 
     const getRettVedDød = () =>
@@ -26,12 +32,11 @@ const RettVedDødController = (): JSX.Element => {
         getRettVedDød()
             .then((response) => {
                 if (isMounted) {
-                    setRettVedDød(response);
-                    setIsLoading(false);
+                    dispatch({ type: ActionType.OK, rettVedDød: response });
                 }
             })
             .catch((e) => {
-                setIsLoading(false);
+                dispatch({ type: ActionType.FAILED });
                 isMounted = false;
                 httpCanceler.cancel();
             });
@@ -51,7 +56,7 @@ const RettVedDødController = (): JSX.Element => {
                         {getHeading()}
                         <WriteAccessBoundContent
                             contentRenderer={() => (
-                                <LinkButton className="ml-4" onClick={() => setEditMode(true)}>
+                                <LinkButton className="ml-4" onClick={() => dispatch({ type: ActionType.ENABLE_EDIT })}>
                                     Rediger vurdering
                                 </LinkButton>
                             )}
@@ -69,7 +74,10 @@ const RettVedDødController = (): JSX.Element => {
                     <Alertstripe type="advarsel">
                         Vurder hvor lang periode søker har rett på pleiepenger ved barnets død.
                     </Alertstripe>
-                    <RettVedDødForm rettVedDød={rettVedDød} onCancelClick={() => setEditMode(false)} />
+                    <RettVedDødForm
+                        rettVedDød={rettVedDød}
+                        onCancelClick={() => dispatch({ type: ActionType.ABORT_EDIT })}
+                    />
                 </div>
             </>
         );
@@ -79,7 +87,11 @@ const RettVedDødController = (): JSX.Element => {
         return null;
     }
 
-    return <PageContainer isLoading={isLoading}>{getContent()}</PageContainer>;
+    return (
+        <PageContainer isLoading={isLoading} hasError={hasFailed}>
+            {getContent()}
+        </PageContainer>
+    );
 };
 
 export default RettVedDødController;

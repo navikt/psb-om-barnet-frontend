@@ -2,8 +2,7 @@ import React from 'react';
 import ContainerContract from '../types/ContainerContract';
 import ContainerContext from './context/ContainerContext';
 import OmPleietrengende from './om-pleietrengende/OmPleietrengende';
-import RettVedDødController from './rett-ved-død/RettVedDødController';
-import './styles.css';
+import RettVedDødController from './rett-ved-død/rett-ved-død-controller/RettVedDødController';
 
 interface MainComponentProps {
     data: ContainerContract;
