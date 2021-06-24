@@ -38,31 +38,29 @@ const OmPleietrengende = (): JSX.Element => {
         };
     }, []);
 
-    if (!pleietrengende) {
-        return null;
-    }
-
     return (
         <PageContainer isLoading={isLoading}>
-            <div className="flex items-center mt-10">
-                <p className="my-0 mr-7">
-                    Navn:
-                    <span className="font-semibold ml-1">{pleietrengende.navn}</span>
-                </p>
+            {pleietrengende && (
+                <div className="flex items-center mt-10">
+                    <p className="my-0 mr-7">
+                        Navn:
+                        <span className="font-semibold ml-1">{pleietrengende.navn}</span>
+                    </p>
 
-                <p className="my-0 mr-7">
-                    Fødselsnummer:
-                    <span className="font-semibold ml-1">{pleietrengende.fnr}</span>
-                </p>
+                    <p className="my-0 mr-7">
+                        Fødselsnummer:
+                        <span className="font-semibold ml-1">{pleietrengende.fnr}</span>
+                    </p>
 
-                <p className="my-0 mr-7">
-                    Diagnose:
-                    <span className="font-semibold ml-1">{pleietrengende.diagnosekoder}</span>
-                </p>
-                {pleietrengende.dødsdato ? (
-                    <p className="text-white bg-black rounded pr-2 pl-2 my-0 leading-6">{`Død ${pleietrengende.dødsdato}`}</p>
-                ) : null}
-            </div>
+                    <p className="my-0 mr-7">
+                        Diagnose:
+                        <span className="font-semibold ml-1">{pleietrengende.diagnosekoder}</span>
+                    </p>
+                    {pleietrengende.dødsdato ? (
+                        <p className="text-white bg-black rounded pr-2 pl-2 my-0 leading-6">{`Død ${pleietrengende.dødsdato}`}</p>
+                    ) : null}
+                </div>
+            )}
         </PageContainer>
     );
 };
