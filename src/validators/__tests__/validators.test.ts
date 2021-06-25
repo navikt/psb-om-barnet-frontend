@@ -1,4 +1,4 @@
-import { required } from '..';
+import required from '../required';
 
 test('required', () => {
     const feilmelding = 'Du må oppgi en verdi';

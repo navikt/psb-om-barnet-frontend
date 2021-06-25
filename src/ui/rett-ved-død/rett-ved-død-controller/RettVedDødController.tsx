@@ -35,7 +35,7 @@ const RettVedDødController = (): JSX.Element => {
                     dispatch({ type: ActionType.OK, rettVedDød: response });
                 }
             })
-            .catch((e) => {
+            .catch(() => {
                 dispatch({ type: ActionType.FAILED });
                 isMounted = false;
                 httpCanceler.cancel();
