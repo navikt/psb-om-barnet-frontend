@@ -2,7 +2,9 @@ module.exports = {
     purge: ['./src/**/*.{ts,tsx}'],
     darkMode: false, // or 'media' or 'class'
     theme: {
-        extend: {},
+        extend: {
+            colors: { 'warning-yellow': '#ff9100' },
+        },
         fontFamily: {
             sans: ['Source Sans Pro', 'Arial', 'sans-serif'],
         },
