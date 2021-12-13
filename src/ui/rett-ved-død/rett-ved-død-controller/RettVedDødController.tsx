@@ -69,6 +69,10 @@ const RettVedDødController = (): JSX.Element => {
 
         return (
             <>
+                <Alertstripe type="info">
+                    Kontroller om søker har søkt om pleiepenger for en periode som varer minst seks uker etter barnets
+                    dødsdato. Dersom det ikke er gjort, se unntaktsrutninen ved barns død.
+                </Alertstripe>
                 {getHeading()}
                 <div className="mt-6">
                     <Alertstripe type="advarsel">
