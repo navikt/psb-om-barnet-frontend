@@ -41,8 +41,6 @@ const RettVedDødForm = ({ rettVedDød, onCancelClick }: RettVedDødFormProps): 
         onFinished({ vurdering, rettVedDødType });
     };
 
-    console.log('hehe')
-
     return (
         <div className="mt-8">
             {/* eslint-disable-next-line react/jsx-props-no-spreading */}
