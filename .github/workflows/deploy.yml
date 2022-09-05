@@ -1,11 +1,11 @@
 name: Deploy Docker image
 on:
-  push:
-    branches:
-      - main
-    paths-ignore:
-      - "README.md"
-  workflow_dispatch:
+    push:
+        branches:
+            - main
+        paths-ignore:
+            - 'README.md'
+    workflow_dispatch:
 
 env:
     IMAGE_BASE: docker.pkg.github.com/${{ github.repository }}/psb-om-barnet-frontend
@@ -26,15 +26,15 @@ jobs:
                   registry-url: https://npm.pkg.github.com/
                   scope: '@navikt'
             - name: Installere dependencies
-              run: npm install
+              run: yarn
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
             - name: Kjøre linter
-              run: npm run lint
+              run: yarn lint
             - name: Kjøre enhetstester
-              run: npm test
+              run: yarn test
             - name: Bygge applikasjon
-              run: npm run build
+              run: yarn build
             - name: Sette versjon
               run: |
                   echo "MAJOR_VERSION=$(npm run majorVersion --silent)" >> $GITHUB_ENV
