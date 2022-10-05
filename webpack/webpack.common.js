@@ -6,7 +6,7 @@ const cssExtractLoaderConfig = {
     loader: MiniCssExtractPlugin.loader,
 };
 
-const CORE_DIR = path.resolve(__dirname, '../node_modules');
+const nodeModules = path.resolve(__dirname, '../node_modules');
 const SRC_DIR = path.resolve(__dirname, '../src');
 
 module.exports = {
@@ -36,7 +36,7 @@ module.exports = {
                     },
                     'postcss-loader',
                 ],
-                exclude: [CORE_DIR],
+                exclude: [nodeModules],
             },
             {
                 test: /\.(less|css)?$/,
@@ -57,7 +57,7 @@ module.exports = {
                         },
                     },
                 ],
-                include: [CORE_DIR],
+                include: [nodeModules],
             },
             {
                 test: /\.(jpg|png|svg)$/,
