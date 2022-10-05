@@ -1,5 +1,5 @@
 import { get } from '@navikt/k9-http-utils';
-import { PageContainer } from '@navikt/k9-react-components';
+import { PageContainer } from '@navikt/ft-plattform-komponenter';
 import axios from 'axios';
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import ContainerContext from '../context/ContainerContext';

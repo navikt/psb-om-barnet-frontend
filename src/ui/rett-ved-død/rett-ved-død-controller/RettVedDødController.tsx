@@ -1,5 +1,5 @@
 import { get } from '@navikt/k9-http-utils';
-import { LinkButton, PageContainer } from '@navikt/k9-react-components';
+import { LinkButton, PageContainer } from '@navikt/ft-plattform-komponenter';
 import axios from 'axios';
 import Alertstripe from 'nav-frontend-alertstriper';
 import React, { useContext, useEffect, useMemo, useReducer } from 'react';

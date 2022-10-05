@@ -1,4 +1,4 @@
-import { GreenCheckIcon } from '@navikt/k9-react-components';
+import { GreenCheckIcon } from '@navikt/ft-plattform-komponenter';
 import React from 'react';
 import { RettVedDød } from '../../../types/RettVedDød';
 import RettVedDødUtfallType from '../../../types/RettVedDødType';
