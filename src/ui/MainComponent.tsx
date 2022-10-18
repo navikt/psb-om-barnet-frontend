@@ -3,6 +3,8 @@ import ContainerContract from '../types/ContainerContract';
 import ContainerContext from './context/ContainerContext';
 import OmPleietrengende from './om-pleietrengende/OmPleietrengende';
 import RettVedDødController from './rett-ved-død/rett-ved-død-controller/RettVedDødController';
+import '@navikt/ft-plattform-komponenter/dist/style.css';
+import '@navikt/ds-css';
 
 interface MainComponentProps {
     data: ContainerContract;

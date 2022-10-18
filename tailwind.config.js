@@ -1,6 +1,5 @@
 module.exports = {
-    purge: ['./src/**/*.{ts,tsx}'],
-    darkMode: false, // or 'media' or 'class'
+    content: ['./src/**/*.{ts,tsx}'],
     theme: {
         extend: {
             colors: { 'warning-yellow': '#ff9100' },
@@ -8,9 +7,6 @@ module.exports = {
         fontFamily: {
             sans: ['Source Sans Pro', 'Arial', 'sans-serif'],
         },
-    },
-    variants: {
-        extend: {},
     },
     plugins: [],
     corePlugins: {

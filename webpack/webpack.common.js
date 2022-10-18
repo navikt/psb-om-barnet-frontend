@@ -4,12 +4,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const cssExtractLoaderConfig = {
     loader: MiniCssExtractPlugin.loader,
-    options: {
-        hmr: process.env.NODE_ENV === 'development',
-    },
 };
 
 const nodeModules = path.resolve(__dirname, '../node_modules');
+const SRC_DIR = path.resolve(__dirname, '../src');
 
 module.exports = {
     entry: path.resolve(__dirname, '../', 'src') + '/app.ts',
@@ -24,9 +22,24 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                 },
+                include: [SRC_DIR],
             },
             {
-                test: /\.(less)?$/,
+                test: /\.(css)?$/,
+                use: [
+                    cssExtractLoaderConfig,
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 1,
+                        },
+                    },
+                    'postcss-loader',
+                ],
+                exclude: [nodeModules],
+            },
+            {
+                test: /\.(less|css)?$/,
                 use: [
                     cssExtractLoaderConfig,
                     {
@@ -45,21 +58,6 @@ module.exports = {
                     },
                 ],
                 include: [nodeModules],
-            },
-            {
-                test: /\.(css)?$/,
-                use: [
-                    'style-loader',
-                    cssExtractLoaderConfig,
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            importLoaders: 1,
-                        },
-                    },
-                    'postcss-loader',
-                ],
-                exclude: [nodeModules],
             },
             {
                 test: /\.(jpg|png|svg)$/,

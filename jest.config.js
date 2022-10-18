@@ -5,9 +5,12 @@ module.exports = {
         '\\.(css|jpg|png|svg|less)$': '<rootDir>/styleMock.js',
         'nav-(.*)-style': '<rootDir>/styleMock.js',
     },
-    globals: {
-        'ts-jest': {
-            babelConfig: true,
-        },
+    transform: {
+        '^.+\\.tsx?$': [
+            'ts-jest',
+            // required due to custom location of tsconfig.json configuration file
+            // https://kulshekhar.github.io/ts-jest/docs/getting-started/options/tsconfig
+            { babelConfig: true },
+        ],
     },
 };
