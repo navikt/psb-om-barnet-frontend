@@ -1,21 +1,20 @@
-import { get } from '@navikt/k9-http-utils';
 import { PageContainer } from '@navikt/ft-plattform-komponenter';
-import axios from 'axios';
+import { get } from '@navikt/k9-http-utils';
 import React, { useContext, useEffect, useMemo, useState } from 'react';
-import ContainerContext from '../context/ContainerContext';
 import Pleietrengende from '../../types/Pleietrengende';
 import PleietrengendeResponse from '../../types/PleietrengendeResponse';
+import ContainerContext from '../context/ContainerContext';
 
 const OmPleietrengende = (): JSX.Element => {
     const { endpoints, httpErrorHandler } = useContext(ContainerContext);
     const [isLoading, setIsLoading] = useState(true);
     const [hasFailed, setHasFailed] = useState(false);
     const [pleietrengende, setPleietrengende] = useState<Pleietrengende>(null);
-    const httpCanceler = useMemo(() => axios.CancelToken.source(), []);
+    const controller = useMemo(() => new AbortController(), []);
 
     const getOmPleietrengende = () =>
         get<PleietrengendeResponse>(endpoints.omPleietrengende, httpErrorHandler, {
-            cancelToken: httpCanceler.token,
+            signal: controller.signal,
         });
 
     useEffect(() => {
@@ -32,11 +31,11 @@ const OmPleietrengende = (): JSX.Element => {
                 setIsLoading(false);
                 setHasFailed(true);
                 isMounted = false;
-                httpCanceler.cancel();
+                controller.abort();
             });
         return () => {
             isMounted = false;
-            httpCanceler.cancel();
+            controller.abort();
         };
     }, []);
 

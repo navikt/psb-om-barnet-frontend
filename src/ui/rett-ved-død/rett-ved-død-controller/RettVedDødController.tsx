@@ -1,6 +1,5 @@
 import { get } from '@navikt/k9-http-utils';
 import { LinkButton, PageContainer } from '@navikt/ft-plattform-komponenter';
-import axios from 'axios';
 import Alertstripe from 'nav-frontend-alertstriper';
 import React, { useContext, useEffect, useMemo, useReducer } from 'react';
 import { RettVedDød } from '../../../types/RettVedDød';
@@ -20,11 +19,11 @@ const RettVedDødController = (): JSX.Element => {
     });
     const { rettVedDød, editMode, isLoading, hasFailed } = state;
     const { readOnly, endpoints, httpErrorHandler } = useContext(ContainerContext);
-    const httpCanceler = useMemo(() => axios.CancelToken.source(), []);
+    const controller = useMemo(() => new AbortController(), []);
 
     const getRettVedDød = () =>
         get<RettVedDød>(endpoints.rettVedDod, httpErrorHandler, {
-            cancelToken: httpCanceler.token,
+            signal: controller.signal,
         });
 
     useEffect(() => {
@@ -38,11 +37,11 @@ const RettVedDødController = (): JSX.Element => {
             .catch(() => {
                 dispatch({ type: ActionType.FAILED });
                 isMounted = false;
-                httpCanceler.cancel();
+                controller.abort();
             });
         return () => {
             isMounted = false;
-            httpCanceler.cancel();
+            controller.abort();
         };
     }, []);
 
