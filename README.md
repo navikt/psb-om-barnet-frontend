@@ -1,4 +1,7 @@
-# Frontend for om barnet
+# Flyttet til https://github.com/navikt/k9-saksbehandling-frontend
+
+
+## Frontend for om barnet
 
 Dette er en frontend for "om barnet" i saksbehandlingen av pleiepenger ved sykt barn.
 
